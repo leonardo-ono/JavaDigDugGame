@@ -95,7 +95,7 @@ public class Food extends Actor {
 
     @Override
     public void onCollision(Collidable other) {
-        if (other instanceof DigDug) {
+        if (other instanceof DigDug && !isDestroyed()) {
             DigDug digdug = (DigDug) other;
             if (digdug.isAlive() && !digdug.isDestroyed()) {
                 alive = false;
@@ -105,11 +105,6 @@ public class Food extends Actor {
                 Audio.playSound("food");
             }
         }
-    }
-    
-    public void revive() {
-        alive = true;
-        destroyed = false;
     }
     
 }

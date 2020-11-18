@@ -1,6 +1,7 @@
 package infra;
 
 import entity.DigDug;
+import infra.renderer.BonusPoints;
 import infra.renderer.Text;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -88,6 +89,7 @@ public class GameController extends Entity<Stage> {
         // debug
         //if (Input.isKeyJustPressed(KeyEvent.VK_K)) {
         //    stateManager.switchTo("level_cleared");
+        //    BonusPoints.show(9999, 112, 144, BonusPoints.ENEMY_KILLED);
         //}
     }
     
@@ -159,7 +161,9 @@ public class GameController extends Entity<Stage> {
         @Override
         public void update() {
             DigDug digdug = scene.getDigdug();
-            if (digdug.isAlive() && GameInfo.getRemainingEnemies() == 0) {
+            if (digdug.isAlive() && GameInfo.getRemainingEnemies() == 0
+                    && !scene.needsToWaitForNextStage()) {
+                
                 owner.getStateManager().switchTo("level_cleared");
             }
             else if (digdug.isAlive() && GameInfo.getRemainingEnemies() == 1) { 
@@ -205,7 +209,9 @@ public class GameController extends Entity<Stage> {
                 digdug.setMusic(MUSIC);
             }
             
-            if (digdug.isAlive() && GameInfo.getRemainingEnemies() == 0) {
+            if (digdug.isAlive() && GameInfo.getRemainingEnemies() == 0
+                && !scene.needsToWaitForNextStage()) {
+                
                 owner.getStateManager().switchTo("level_cleared");
             }
             
@@ -265,7 +271,9 @@ public class GameController extends Entity<Stage> {
         @Override
         public void update() {
             long currentTime = System.currentTimeMillis();
-            if (currentTime >= checkConditionTime) {
+            if (currentTime >= checkConditionTime
+                    && !scene.needsToWaitForNextStage()) {
+                
                 boolean gameOver = GameInfo.nextLife();
                 if (gameOver) {
                     stateManager.switchTo("game_over");

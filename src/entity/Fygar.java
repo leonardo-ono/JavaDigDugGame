@@ -73,11 +73,14 @@ public class Fygar extends Enemy {
         
         @Override
         public void update() {
+            super.update();
+
             long currentTime = System.currentTimeMillis();
             if (currentTime >= breatheTime) {
                 
                 if (Underground.canMoveTo((int) x, (int) y, LEFT, 12)
-                    && Underground.canMoveTo((int) x, (int) y, RIGHT, 12)) {
+                    && Underground.canMoveTo((int) x, (int) y, RIGHT, 12)
+                    && (direction == LEFT || direction == RIGHT)) {
                     
                     owner.getStateManager().switchTo("preparing_to_breathe");
                     return;
@@ -87,7 +90,6 @@ public class Fygar extends Enemy {
                             + (int) (3000 * Math.random());  
                 }
             }             
-            super.update();
         }
         
     }

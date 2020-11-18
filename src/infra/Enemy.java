@@ -379,6 +379,9 @@ public abstract class Enemy extends Actor {
             alive = false;
             owner.getAnimationPlayer().setDirection(Direction.RIGHT);
             owner.getAnimationPlayer().play("hit_by_rock");
+            if (harpoon.getEnemy() == Enemy.this) {
+                harpoon.cancel();
+            }
         }
         
         @Override
@@ -497,13 +500,17 @@ public abstract class Enemy extends Actor {
     }
 
     public void hitByRock(Rock rock) {
-        this.rock = rock;
-        stateManager.switchTo("hit_by_rock");
+        if (alive && !destroyed) {
+            this.rock = rock;
+            stateManager.switchTo("hit_by_rock");
+        }
     }
 
     public void hitByHarpoon() {
-        air += 1;
-        stateManager.switchTo("inflating");
+        if (alive && !destroyed) {
+            air += 1;
+            stateManager.switchTo("inflating");
+        }
     }
 
     public void inflate() {

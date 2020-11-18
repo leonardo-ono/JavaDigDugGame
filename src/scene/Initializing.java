@@ -18,7 +18,7 @@ public class Initializing extends Scene {
     
     @Override
     public void onEnter() {
-        waitTime = System.currentTimeMillis() + 30;
+        waitTime = System.currentTimeMillis() + 3000;
     }
 
     @Override

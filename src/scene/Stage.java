@@ -5,6 +5,7 @@ import entity.Fire;
 import entity.Food;
 import entity.Harpoon;
 import entity.Rock;
+import infra.Actor;
 import infra.Collidable;
 import infra.Enemy;
 import infra.Entity;
@@ -63,6 +64,7 @@ public class Stage extends Scene {
             reviveCurrentStageAliveEntities();
         }
         Flowers.setStage(GameInfo.getStage());
+        BonusPoints.hideAll();
     }
 
     public void addEntity(Entity entity) {
@@ -95,7 +97,6 @@ public class Stage extends Scene {
     private void reviveCurrentStageAliveEntities() {
         gameController.revive();
         digdug.revive();
-        food.revive();
         for (Entity entity : entities) {
             if (entity instanceof Enemy) {
                 Enemy enemy = (Enemy) entity;
@@ -104,6 +105,33 @@ public class Stage extends Scene {
                 }
             }
         }        
+    }
+    
+    public boolean needsToWaitForNextStage() {
+        
+        for (Entity entity : entities) {
+            
+            // not alive enemies & not destroyed enemies
+            // --- bug: sometimes it locks the game ---
+//            if (entity instanceof Enemy) {
+//                Enemy enemy = (Enemy) entity;
+//                if (!enemy.isAlive() && !enemy.isDestroyed()) {
+//                    System.out.println("waiting all not alive enemies to be destroyed !");
+//                    return true;
+//                }
+//            }
+
+            // inAction rocks
+            if (entity instanceof Rock) {
+                Rock rock = (Rock) entity;
+                if (rock.isInAction()) {
+                    System.out.println("waiting for rock inAction !");
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
     
     @Override
@@ -155,10 +183,17 @@ public class Stage extends Scene {
 
     public void destroyAllStageEntities() {
         for (Entity entity : entities) {
-            if (entity instanceof Enemy
-                    || entity instanceof Fire
-                    || entity instanceof Harpoon) {
+            if (entity instanceof Food
+                || entity instanceof Fire
+                || entity instanceof Harpoon) {
+                
                 entity.destroy();
+            }
+            if (entity instanceof Enemy) {
+                Enemy enemy = (Enemy) entity;
+                if (enemy.isAlive() && !enemy.isDestroyed()) {
+                    enemy.destroy();
+                }
             }
         }        
     }

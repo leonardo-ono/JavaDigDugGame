@@ -29,12 +29,18 @@ public class Rock extends Actor {
     private double originalY;
     private int actorsHitCount;
     
+    private boolean inAction;
+    
     public Rock(Stage stage, double x, double y) {
         super(stage, "rock", 16);
         this.digdug = stage.getDigdug();
         this.x = x;
         this.y = y;
         zorder = 2;
+    }
+
+    public boolean isInAction() {
+        return inAction;
     }
     
     @Override
@@ -126,6 +132,7 @@ public class Rock extends Actor {
         public void onEnter() {
             originalX = x;
             startTime = System.currentTimeMillis();
+            inAction = true;
         }
         
         @Override
@@ -218,6 +225,7 @@ public class Rock extends Actor {
         @Override
         public void onEnter() {
             destroy();
+            
             if (actorsHitCount >= 2) {
                 if (GameInfo.isStageBonusAvailable()) {
                     GameInfo.consumeStageBonus();
@@ -231,6 +239,8 @@ public class Rock extends Actor {
                 BonusPoints.show(
                         bonusPoint, (int) x, (int) y, BonusPoints.ENEMY_KILLED);
             }
+            
+            inAction = false;
         }
         
     }

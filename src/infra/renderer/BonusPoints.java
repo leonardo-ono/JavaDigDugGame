@@ -46,4 +46,8 @@ public class BonusPoints {
         }
     }
     
+    public static void hideAll() {
+        POINTS.forEach(point -> point.hide());
+    }
+
 }

@@ -51,6 +51,10 @@ public class BonusPoint extends Entity {
         }
     }
 
+    public void hide() {
+        free = true;
+    }
+
     public boolean isFree() {
         return free;
     }

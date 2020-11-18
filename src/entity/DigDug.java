@@ -392,7 +392,6 @@ public class DigDug extends Actor {
         public void update() {
             long currentTime = System.currentTimeMillis();
             if (currentTime > startTime + 1000) {
-                scene.destroyAllStageEntities();
                 owner.getStateManager().switchTo("dying");
             }
         }
@@ -410,6 +409,7 @@ public class DigDug extends Actor {
 
         @Override
         public void onEnter() {
+            scene.destroyAllStageEntities();
             owner.getAnimationPlayer().play("dying", true);
             Audio.playSound("digdug_disappearing");
         }
