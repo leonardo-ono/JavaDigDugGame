@@ -1,0 +1,33 @@
+# === level 7 ===
+
+# --- speed ---
+
+enemy_chasing_speed 1.09
+enemy_ghost_speed 0.29
+
+# --- tunnel x y size h|v ---
+
+# initial tunnel for Dig Dug
+tunnel 120 152 44 h
+
+tunnel 72 184 44 h
+tunnel 104 88 44 v
+tunnel 184 88 44 h
+tunnel 168 216 44 h
+
+# --- entity x y ---
+
+pooka 64 184
+pooka 104 80
+pooka 104 96
+pooka 176 88
+
+fygar 79 184
+fygar 192 88
+fygar 168 216
+
+rock 40 120
+rock 152 72
+rock 216 136
+rock 200 200
+
