@@ -1,7 +1,6 @@
 package infra;
 
 import entity.DigDug;
-import entity.Fygar;
 import entity.Harpoon;
 import entity.Rock;
 import static infra.Direction.DOWN;
@@ -11,15 +10,13 @@ import static infra.Direction.RIGHT;
 import static infra.Direction.UP;
 import infra.renderer.AnimationPlayer.Animation;
 import infra.renderer.BonusPoints;
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import scene.Stage;
 
 /**
- * Enemy class.
+ * Enemy base class.
  * 
  * @author Leonardo Ono (ono.leo80@gmail.com)
  */

@@ -1,11 +1,9 @@
 package infra;
 
 import entity.DigDug;
-import infra.renderer.BonusPoints;
 import infra.renderer.Text;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import scene.Stage;
 
 /**

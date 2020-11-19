@@ -9,7 +9,7 @@ import static infra.Settings.CANVAS_WIDTH;
 import static infra.Settings.CANVAS_HEIGHT;
 
 /**
- * Underground (renderer) class.
+ * Underground class.
  * 
  * @author Leonardo Ono (ono.leo80@gmail.com)
  */
