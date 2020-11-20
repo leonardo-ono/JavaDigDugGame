@@ -99,7 +99,7 @@ public class Display extends Canvas {
     }
 
     private void draw(Graphics2D g) {
-        //g.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        g.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         g.translate(-16, 0);
         scenes.draw(g);
     }

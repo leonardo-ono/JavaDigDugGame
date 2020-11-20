@@ -108,29 +108,15 @@ public class Stage extends Scene {
     }
     
     public boolean needsToWaitForNextStage() {
-        
         for (Entity entity : entities) {
-            
-            // not alive enemies & not destroyed enemies
-            // --- bug: sometimes it locks the game ---
-//            if (entity instanceof Enemy) {
-//                Enemy enemy = (Enemy) entity;
-//                if (!enemy.isAlive() && !enemy.isDestroyed()) {
-//                    System.out.println("waiting all not alive enemies to be destroyed !");
-//                    return true;
-//                }
-//            }
-
             // inAction rocks
             if (entity instanceof Rock) {
                 Rock rock = (Rock) entity;
                 if (rock.isInAction()) {
-                    System.out.println("waiting for rock inAction !");
                     return true;
                 }
             }
         }
-        
         return false;
     }
     
