@@ -10,7 +10,7 @@ import scene.Stage;
  * 
  * @author Leonardo Ono (ono.leo80@gmail.com)
  */
-public class Actor extends Entity<Stage> implements Collidable {
+public abstract class Actor extends Entity<Stage> implements Collidable {
 
     protected double x;
     protected double y;

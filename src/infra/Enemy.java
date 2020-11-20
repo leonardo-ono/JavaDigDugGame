@@ -336,8 +336,8 @@ public abstract class Enemy extends Actor {
         public void update() {
             updateTargetPosition();
             
-            int difX = (int) (targetX - x);
-            int difY = (int) (targetY - y);
+            double difX = targetX - x;
+            double difY = targetY - y;
             
             x += Math.signum(difX) * ghostSpeed;
             y += Math.signum(difY) * ghostSpeed;
