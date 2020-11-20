@@ -417,7 +417,6 @@ public class DigDug extends Actor {
         @Override
         public void update() {
             if (owner.getAnimationPlayer().isFinished()) {
-                //owner.getStateManager().switchTo("walking");
                 destroy();
             }
         }

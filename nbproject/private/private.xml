@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/scene/Initializing.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/Food.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/renderer/Flowers.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/Fire.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/scene/Stage.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/Actor.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/Pooka.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/DigDug.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/Underground.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/StateManager.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/renderer/HUD.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/renderer/BonusPoints.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/GameController.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/Entity.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/Rock.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/BonusPoint.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/entity/Fygar.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/Enemy.java</file>
+            <file>file:/D:/digdug/JavaDigDugTest11/src/infra/Input.java</file>
+        </group>
+    </open-files>
 </project-private>

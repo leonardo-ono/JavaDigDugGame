@@ -15,11 +15,11 @@ public class Input implements KeyListener {
     public static Set<Integer> keyPressed = new HashSet<>();
     public static Set<Integer> keyPressedConsumed = new HashSet<>();
     
-    public static boolean isKeyPressed(int keyCode) {
+    public static synchronized boolean isKeyPressed(int keyCode) {
         return keyPressed.contains(keyCode);
     }
 
-    public static boolean isKeyJustPressed(int keyCode) {
+    public static synchronized boolean isKeyJustPressed(int keyCode) {
         if (!keyPressedConsumed.contains(keyCode) 
                 && keyPressed.contains(keyCode)) {
             
@@ -30,16 +30,16 @@ public class Input implements KeyListener {
     }
     
     @Override
-    public void keyTyped(KeyEvent e) {
+    public synchronized void keyTyped(KeyEvent e) {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public synchronized void keyPressed(KeyEvent e) {
         keyPressed.add(e.getKeyCode());
     }
     
     @Override
-    public void keyReleased(KeyEvent e) {
+    public synchronized void keyReleased(KeyEvent e) {
         keyPressed.remove(e.getKeyCode());
         keyPressedConsumed.remove(e.getKeyCode());
     }
