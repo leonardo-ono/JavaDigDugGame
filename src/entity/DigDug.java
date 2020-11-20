@@ -86,10 +86,11 @@ public class DigDug extends Actor {
             }
             else {
                 x = 120;
-                y = 152;
-                desiredDirection = RIGHT;
-                currentDirection = RIGHT;
+                y = 151;
+                currentDirection = DOWN;
+                desiredDirection = IDLE;
                 animationPlayer.setDirection(RIGHT);
+                moveRequested = true;                
                 for (int cy = 32; cy <= 152; cy++) {
                     Underground.dig(120, cy, false);
                 }
@@ -115,11 +116,8 @@ public class DigDug extends Actor {
                 moveRequested = true;                
             }
             else if ((int) y == 151 && (int) x == 120) {
-                desiredDirection = LEFT;
-                moveRequested = true;                
-            }
-            else if ((int) y == 151 && (int) x == 119) {
-                desiredDirection = RIGHT;
+                desiredDirection = IDLE;
+                animationPlayer.setDirection(RIGHT);
                 moveRequested = true;                
             }
         }
