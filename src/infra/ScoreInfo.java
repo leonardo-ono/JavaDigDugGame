@@ -10,6 +10,10 @@ import java.util.List;
  * @author Leonardo Ono (ono.leo80@gmail.com)
  */
 public class ScoreInfo {
+
+    // extra life constants
+    public static final int SCORE_EXTRA_LIFE_1 = 20000;
+    public static final int SCORE_EXTRA_LIFE_2 = 60000;
     
     public static class HiscoreEntry implements Comparable<HiscoreEntry> {
         

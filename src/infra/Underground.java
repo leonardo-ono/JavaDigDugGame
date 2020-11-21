@@ -119,6 +119,7 @@ public class Underground {
             SCORE_MASK.setRGB(x, y, Color.WHITE.getRGB());
             if (enableDigScore) {
                 digScore += 1;
+                GameInfo.checkExtraLife();
             }
         }
         

@@ -94,8 +94,9 @@ public class GameController extends Entity<Stage> {
             //GameInfo.nextLevel();
             //stateManager.switchTo("game_over");
         //}
+        
         //if (Input.isKeyJustPressed(KeyEvent.VK_S)) {
-        //    GameInfo.addScore(500);
+        //    GameInfo.addScore(9950);
         //}
     }
     

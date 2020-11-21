@@ -1,5 +1,7 @@
 package infra;
 
+import static infra.ScoreInfo.SCORE_EXTRA_LIFE_1;
+import static infra.ScoreInfo.SCORE_EXTRA_LIFE_2;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +22,7 @@ public class GameInfo {
     private static boolean firstPlay = true;
     private static boolean firstStagePlay = true;
     private static boolean stageBonusAvailable = true;
+    private static int nextExtraLife;
     
     private static final Set<String> REMAINING_ENEMY_IDS 
             = new HashSet<String>();
@@ -98,6 +101,7 @@ public class GameInfo {
 
     public static void addScore(int point) {
         score += point;
+        checkExtraLife();
     }
 
     public static Set<String> getRemainingEnemyIds() {
@@ -124,6 +128,7 @@ public class GameInfo {
         firstStagePlay = true;
         stageBonusAvailable = true;
         REMAINING_ENEMY_IDS.clear();
+        nextExtraLife = SCORE_EXTRA_LIFE_1;
     }
     
     // return "is game over ?"
@@ -143,6 +148,14 @@ public class GameInfo {
         firstStagePlay = true;
         stageBonusAvailable = true;
         REMAINING_ENEMY_IDS.clear();
+    }
+
+    public static void checkExtraLife() {
+        if (GameInfo.getScore() >= nextExtraLife) {
+            nextExtraLife += SCORE_EXTRA_LIFE_2;
+            lives++;
+            Audio.playSound("credit");
+        }
     }
     
 }
