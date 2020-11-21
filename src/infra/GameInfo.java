@@ -16,8 +16,7 @@ public class GameInfo {
     
     private static int stage = 1;
     private static int lives = NUMBER_OF_LIVES;
-    private static int score;
-    private static int hiscore = 10000;
+    private static int score = 10001;
     private static boolean firstPlay = true;
     private static boolean firstStagePlay = true;
     private static boolean stageBonusAvailable = true;
@@ -53,8 +52,12 @@ public class GameInfo {
         return stageStr.substring(stageStr.length() - 5, stageStr.length());
     }
 
+    public static int getScore() {
+        return score + Underground.getDigScore();
+    }
+
     public static String getScoreStr() {
-        String scoreStr = "" + (score + Underground.getDigScore());
+        String scoreStr = "" + getScore();
         if (scoreStr.length() < 2) {
             scoreStr = "00" + scoreStr;
             scoreStr = scoreStr.substring(
@@ -65,6 +68,7 @@ public class GameInfo {
     }
 
     public static String getHiscoreStr() {
+        int hiscore = ScoreInfo.HISCORES.get(0).score;
         String hiscoreStr = "" + hiscore;
         if (hiscoreStr.length() < 2) {
             hiscoreStr = "00" + hiscoreStr;
@@ -94,12 +98,6 @@ public class GameInfo {
 
     public static void addScore(int point) {
         score += point;
-    }
-
-    public static void updateHiscore() {
-        if ((score + Underground.getDigScore()) > hiscore) {
-            hiscore = score + Underground.getDigScore();
-        }
     }
 
     public static Set<String> getRemainingEnemyIds() {

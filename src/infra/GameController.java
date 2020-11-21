@@ -4,6 +4,7 @@ import entity.DigDug;
 import infra.renderer.Text;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import scene.Stage;
 
 /**
@@ -88,6 +89,13 @@ public class GameController extends Entity<Stage> {
         //if (Input.isKeyJustPressed(KeyEvent.VK_K)) {
         //    stateManager.switchTo("level_cleared");
         //    BonusPoints.show(9999, 112, 144, BonusPoints.ENEMY_KILLED);
+            //GameInfo.addScore(9500);
+            //GameInfo.nextLevel();
+            //GameInfo.nextLevel();
+            //stateManager.switchTo("game_over");
+        //}
+        //if (Input.isKeyJustPressed(KeyEvent.VK_S)) {
+        //    GameInfo.addScore(500);
         //}
     }
     
@@ -314,8 +322,16 @@ public class GameController extends Entity<Stage> {
         public void update() {
             long currentTime = System.currentTimeMillis();
             if (currentTime >= titleTime) {
-                GameInfo.updateHiscore();
-                owner.getScene().getManager().switchTo("title");
+                // hiscore
+                if (GameInfo.getScore() > ScoreInfo.HISCORES.get(0).score) {
+                    owner.getScene().getManager().switchTo("hiscore_top");
+                }
+                else if (GameInfo.getScore() > ScoreInfo.HISCORES.get(4).score) {
+                    owner.getScene().getManager().switchTo("hiscore_enter_name");
+                }
+                else {
+                    owner.getScene().getManager().switchTo("title");
+                }
             }
         }
 

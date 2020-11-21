@@ -24,6 +24,7 @@ public class Title extends Scene {
     private final BufferedImage backgroundImage;
     private final BufferedImage titleImage;
     private final BufferedImage namcoImage;
+    private long hiscoreSceneTime;
 
     public Title(StateManager<Scene> scenes) {
         super(scenes, "title", null);
@@ -38,6 +39,7 @@ public class Title extends Scene {
         HUD.setBlink1UP(false);
         Underground.reset(-1);
         Audio.enable();
+        hiscoreSceneTime = System.currentTimeMillis() + 10000;
     }
 
     @Override
@@ -52,6 +54,12 @@ public class Title extends Scene {
             }
 
             manager.switchTo("stage");
+            return;
+        }
+        
+        long currentTime = System.currentTimeMillis();
+        if (currentTime >= hiscoreSceneTime) {
+            manager.switchTo("hiscores");
         }
     }
 

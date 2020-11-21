@@ -5,7 +5,6 @@ import entity.Fire;
 import entity.Food;
 import entity.Harpoon;
 import entity.Rock;
-import infra.Actor;
 import infra.Collidable;
 import infra.Enemy;
 import infra.Entity;
@@ -57,6 +56,7 @@ public class Stage extends Scene {
     @Override
     public void onEnter() {
         if (GameInfo.isFirstStagePlay()) {
+            GameInfo.addScore(Underground.getDigScore());
             Underground.reset(GameInfo.getStage());
             createAllStageEntities();
         }

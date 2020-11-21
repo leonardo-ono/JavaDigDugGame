@@ -8,6 +8,9 @@ import static infra.Settings.VIEWPORT_WIDTH;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.image.BufferStrategy;
+import scene.HiscoreEnterName;
+import scene.HiscoreTop;
+import scene.Hiscores;
 import scene.Initializing;
 import scene.OLPresents;
 import scene.Stage;
@@ -50,7 +53,10 @@ public class Display extends Canvas {
         scenes.addState(new Initializing(scenes));
         scenes.addState(new OLPresents(scenes));
         scenes.addState(new Title(scenes));
+        scenes.addState(new Hiscores(scenes));
         scenes.addState(new Stage(scenes));
+        scenes.addState(new HiscoreTop(scenes));
+        scenes.addState(new HiscoreEnterName(scenes));
         scenes.initAll();
         scenes.switchTo("initializing");
     }

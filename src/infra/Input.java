@@ -12,9 +12,14 @@ import java.util.Set;
  */
 public class Input implements KeyListener {
     
-    public static Set<Integer> keyPressed = new HashSet<>();
-    public static Set<Integer> keyPressedConsumed = new HashSet<>();
-    
+    private static Set<Integer> keyPressed = new HashSet<>();
+    private static Set<Integer> keyPressedConsumed = new HashSet<>();
+    private static KeyListener listener;
+
+    public static void setListener(KeyListener listener) {
+        Input.listener = listener;
+    }
+
     public static synchronized boolean isKeyPressed(int keyCode) {
         return keyPressed.contains(keyCode);
     }
@@ -31,17 +36,26 @@ public class Input implements KeyListener {
     
     @Override
     public synchronized void keyTyped(KeyEvent e) {
+        if (listener != null) {
+            listener.keyTyped(e);
+        }
     }
 
     @Override
     public synchronized void keyPressed(KeyEvent e) {
         keyPressed.add(e.getKeyCode());
+        if (listener != null) {
+            listener.keyPressed(e);
+        }
     }
     
     @Override
     public synchronized void keyReleased(KeyEvent e) {
         keyPressed.remove(e.getKeyCode());
         keyPressedConsumed.remove(e.getKeyCode());
+        if (listener != null) {
+            listener.keyReleased(e);
+        }
     }
     
 }

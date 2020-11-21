@@ -26,7 +26,6 @@ public class Initializing extends Scene {
         long currentTime = System.currentTimeMillis();
         if (currentTime >= waitTime) {
             manager.switchTo("ol_presents");
-            // manager.switchTo("title");
         }
     }
     
