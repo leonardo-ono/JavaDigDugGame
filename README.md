@@ -17,7 +17,7 @@ https://github.com/leonardo-ono/JavaDigDugGame/releases/tag/v0.0.1
 
 ## Video
 
-[![video](http://img.youtube.com/vi/lSkefcrfpsw/0.jpg)](http://www.youtube.com/watch?v=lSkefcrfpsw)
+[![video](http://img.youtube.com/vi/2U6F2cvjEpA/0.jpg)](http://www.youtube.com/watch?v=2U6F2cvjEpA)
 
 click the image above to see the gameplay video
 
