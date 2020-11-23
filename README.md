@@ -38,3 +38,11 @@ click the image above to see the gameplay video
 
 ![](https://raw.githubusercontent.com/leonardo-ono/JavaDigDugGame/master/screenshots/screenshot_6.png)
 
+
+## References
+
+* https://en.wikipedia.org/wiki/Dig_Dug
+* https://www.arcadeclassics.net/80s-game-videos/dig-dug
+* https://strategywiki.org/wiki/Dig_Dug/Getting_Started
+
+
