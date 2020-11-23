@@ -11,6 +11,7 @@ https://github.com/leonardo-ono/JavaDigDugGame/releases/tag/v0.0.1
 ## Control
 
 [Arrow] keys: move Dig Dug
+
 [Space] key: fire harpoon / pump
 
 
