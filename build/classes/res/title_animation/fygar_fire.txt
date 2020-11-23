@@ -1,0 +1,18 @@
+animation_player fygar_fire_title 48 16
+
+add_animation idle 3 3 0 false
+add_animation fire 0 3 0.25 false
+
+frames_size 1000
+
+frame 0
+digging false
+direction RIGHT
+position 104 -500
+animation idle
+
+frame 313
+direction IDLE
+position 104 32
+animation fire true
+sound fygar_fire

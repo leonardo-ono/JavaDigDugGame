@@ -42,6 +42,10 @@ public class AnimationPlayer {
     public AnimationPlayer(String resource, int size) {
         sprite = new Sprite(resource, size);
     }
+    
+    public AnimationPlayer(String resource, int sizeX, int sizeY) {
+        sprite = new Sprite(resource, sizeX, sizeY);
+    }
 
     public Sprite getSprite() {
         return sprite;

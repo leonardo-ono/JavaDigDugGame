@@ -29,10 +29,12 @@ public class Settings {
     public static final String RES_SOUND_FILE_EXT = ".wav"; 
     public static final String RES_FONT_FILE_EXT = ".ttf"; 
     public static final String RES_LEVEL_FILE_EXT = ".txt"; 
+    public static final String RES_TITLE_ANIMATION_FILE_EXT = ".txt"; 
     
     public static final String RES_IMAGE_PATH = "/res/image/";
     public static final String RES_SOUND_PATH = "/res/sound/";
     public static final String RES_FONT_PATH = "/res/font/";
     public static final String RES_LEVEL_PATH = "/res/level/";
+    public static final String RES_TITLE_ANIMATION_PATH = "/res/title_animation/";
     
 }

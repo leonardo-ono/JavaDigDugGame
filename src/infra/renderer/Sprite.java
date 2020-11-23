@@ -14,7 +14,8 @@ import java.awt.image.BufferedImage;
  */
 public class Sprite {
     
-    private final int size;
+    private final int sizeX;
+    private final int sizeY;
     private final int originX;
     private final int originY;
     
@@ -24,9 +25,14 @@ public class Sprite {
     private double angle = 0;
     
     public Sprite(String resource, int size) {
-        this.size = size;
-        this.originX = size / 2;
-        this.originY = size / 2;
+        this(resource, size, size);
+    }
+    
+    public Sprite(String resource, int sizeX, int sizeY) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.originX = sizeX / 2;
+        this.originY = sizeY / 2;
         this.image = Resource.getImage(resource);
         frameIndex = 0;
     }
@@ -38,18 +44,18 @@ public class Sprite {
     public void draw(Graphics2D g, int x, int y) {
         int dx1 = 0;
         int dy1 = 0;
-        int dx2 = size;
-        int dy2 = size;
+        int dx2 = sizeX;
+        int dy2 = sizeY;
         if (direction == LEFT || direction == DOWN) {
-            dx1 = size;
+            dx1 = sizeX;
             dx2 = 0;
         }
-        int sx1 = frameIndex * size;
+        int sx1 = frameIndex * sizeX;
         int sy1 = 0;
-        int sx2 = sx1 + size;
-        int sy2 = size;
+        int sx2 = sx1 + sizeX;
+        int sy2 = sizeY;
         AffineTransform oat = g.getTransform();
-        g.translate(originX + x - size / 2, originY + y - size / 2);
+        g.translate(originX + x - sizeX / 2, originY + y - sizeY / 2);
         g.rotate(angle);
         g.translate(-originX, -originY);
         g.drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, null);

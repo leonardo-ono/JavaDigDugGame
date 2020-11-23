@@ -1,0 +1,84 @@
+animation_player namco_0 56 12
+
+add_animation idle 0 0 0 false
+
+frames_size 1000
+
+frame 0
+digging false
+direction IDLE
+position 304 32
+animation idle
+
+frame 193
+direction LEFT
+
+frame 305
+direction IDLE
+
+frame 360
+direction LEFT
+
+frame 424
+direction IDLE
+
+frame 529
+position 128 32
+frame 530
+position 128 40
+frame 531
+position 128 48
+frame 532
+position 128 56
+frame 533
+position 128 64
+frame 534
+position 128 72
+frame 535
+position 128 80
+frame 536
+position 128 88
+frame 537
+position 128 96
+frame 538
+position 128 104
+frame 539
+position 128 112
+frame 540
+position 128 120
+frame 541
+position 128 128
+frame 542
+position 128 136
+frame 543
+position 128 144
+frame 544
+position 128 152
+frame 545
+position 128 160
+frame 546
+position 128 168
+frame 547
+position 128 176
+frame 548
+position 128 184
+frame 549
+position 128 192
+frame 550
+position 128 200
+frame 551
+position 128 208
+frame 552
+position 128 216
+frame 553
+position 128 224
+frame 554
+position 128 232
+frame 555
+position 128 240
+frame 556
+position 128 248
+frame 557
+position 128 256
+frame 558
+position 128 260

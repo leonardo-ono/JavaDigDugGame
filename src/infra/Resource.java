@@ -4,7 +4,9 @@ import entity.Fygar;
 import entity.Pooka;
 import entity.Rock;
 import static infra.Settings.*;
+import infra.renderer.AnimationPlayer;
 import java.awt.Font;
+import java.awt.Point;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,8 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import scene.Stage;
+import scene.Title.FrameState;
+import scene.Title.TitleAnimation;
 
 /**
  * Resource class.
@@ -29,6 +33,7 @@ public class Resource {
     private static final Map<String, BufferedImage> IMAGES = new HashMap<>();
     private static final Map<String, byte[]> SOUNDS = new HashMap<>();
     private static final Map<String, Font> FONTS = new HashMap<>();
+    private static final Map<String, TitleAnimation> TITLE_ANIMATIONS = new HashMap<>();
 
     private Resource() {
     }
@@ -186,6 +191,109 @@ public class Resource {
 
             System.exit(-1);
         }
+    }
+
+    public static TitleAnimation getTitleAnimation(String resource) {
+        TitleAnimation titleAnimation = TITLE_ANIMATIONS.get(resource);
+        if (titleAnimation == null) {
+            String titleAnimationResource = RES_TITLE_ANIMATION_PATH 
+                    + resource + RES_TITLE_ANIMATION_FILE_EXT;
+
+            try {
+                InputStream is = 
+                    Resource.class.getResourceAsStream(titleAnimationResource);
+                
+                BufferedReader br = 
+                    new BufferedReader(new InputStreamReader(is));
+                AnimationPlayer animationPlayer = null;
+                FrameState frameStates[] = null;
+                int currentFrame = 0;
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    line = line.trim();
+                    if (line.isEmpty() || line.startsWith("#")) {
+                        continue;
+                    }
+                    String[] data = line.split("\\ ");
+                    if (data[0].equals("animation_player")) {
+                        String spriteResource = data[1];
+                        int sizeX = Integer.parseInt(data[2]);
+                        int sizeY = Integer.parseInt(data[3]);
+                        animationPlayer = new AnimationPlayer(
+                                spriteResource, sizeX, sizeY);
+                    }
+                    else if (data[0].equals("add_animation")) {
+                        String animationName = data[1];
+                        int start = Integer.parseInt(data[2]);
+                        int end = Integer.parseInt(data[3]);
+                        double speed = Double.parseDouble(data[4]);
+                        boolean looping = Boolean.parseBoolean(data[5]);
+                        animationPlayer.addAnimation(
+                                animationName, start, end, speed, looping);
+                    }
+                    else if (data[0].equals("frames_size")) {
+                        int framesSize = Integer.parseInt(data[1]);
+                        frameStates = new FrameState[framesSize];
+                    }
+                    else if (data[0].equals("frame")) {
+                        currentFrame = Integer.parseInt(data[1]);
+                    }
+                    else if (data[0].equals("digging")) {
+                        boolean digging = Boolean.parseBoolean(data[1]);
+                        if (frameStates[currentFrame] == null) {
+                            frameStates[currentFrame] = new FrameState();
+                        }
+                        frameStates[currentFrame].digging = digging;
+                    }
+                    else if (data[0].equals("direction")) {
+                        Direction direction = Direction.valueOf(data[1]);
+                        if (frameStates[currentFrame] == null) {
+                            frameStates[currentFrame] = new FrameState();
+                        }
+                        frameStates[currentFrame].direction = direction;
+                    }
+                    else if (data[0].equals("position")) {
+                        int x = Integer.parseInt(data[1]);
+                        int y = Integer.parseInt(data[2]);
+                        if (frameStates[currentFrame] == null) {
+                            frameStates[currentFrame] = new FrameState();
+                        }
+                        frameStates[currentFrame].position = new Point(x, y);
+                    }
+                    else if (data[0].equals("animation")) {
+                        String animation = data[1];
+                        boolean restart = false;
+                        try {
+                            restart = Boolean.parseBoolean(data[2]);
+                        }
+                        catch (Exception e) {}
+                        if (frameStates[currentFrame] == null) {
+                            frameStates[currentFrame] = new FrameState();
+                        }
+                        frameStates[currentFrame].animation = animation;
+                        frameStates[currentFrame].restart = restart;
+                    }
+                    else if (data[0].equals("sound")) {
+                        String sound = data[1];
+                        if (frameStates[currentFrame] == null) {
+                            frameStates[currentFrame] = new FrameState();
+                        }
+                        frameStates[currentFrame].sound = sound;
+                    }
+                    titleAnimation = new TitleAnimation(
+                            resource, frameStates, animationPlayer);
+                    
+                    TITLE_ANIMATIONS.put(resource, titleAnimation);
+                }
+                br.close();
+            } catch (Exception ex) {
+                Logger.getLogger(
+                        Resource.class.getName()).log(Level.SEVERE, null, ex);
+
+                System.exit(-1);
+            }
+        }
+        return titleAnimation;
     }
     
 }

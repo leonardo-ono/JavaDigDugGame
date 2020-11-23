@@ -51,9 +51,9 @@ public class Hiscores extends Scene {
 
     @Override
     public void draw(Graphics2D g) {
-        g.drawImage(titleImage, 49, 47, null);
+        g.drawImage(titleImage, 208, 60, -160, 48, null);
         
-        Text.draw(g, "BEST 5", 13, 13, Color.WHITE);
+        Text.draw(g, "BEST 5", 13, 15, Color.WHITE);
         
         Text.draw(g, "SCORE ROUND NAME", 11, 21, Color.WHITE);
         

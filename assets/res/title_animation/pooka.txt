@@ -1,0 +1,43 @@
+animation_player pooka 32 32
+
+add_animation idle 2 2 0 false
+add_animation walking 2 3 0.1 true
+add_animation falling 7 7 0 false
+
+frames_size 1000
+
+frame 0
+digging false
+direction IDLE
+position 360 32
+animation idle
+
+frame 193
+direction LEFT
+animation walking
+
+frame 305
+direction IDLE
+
+frame 360
+direction LEFT
+
+frame 424
+direction IDLE
+
+frame 529
+animation falling
+position 184 32
+frame 530
+position 184 36
+frame 531
+position 184 40
+frame 532
+position 184 44
+frame 533
+position 184 48
+frame 534
+position 184 52
+frame 535
+position 184 56
+

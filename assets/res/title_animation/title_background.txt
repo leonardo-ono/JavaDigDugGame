@@ -1,0 +1,14 @@
+animation_player title_background 177 72
+
+add_animation idle 0 0 0 false
+
+frames_size 1000
+
+frame 0
+digging false
+direction IDLE
+position -500 68
+animation idle
+
+frame 529
+position 129 68

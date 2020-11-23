@@ -1,0 +1,50 @@
+animation_player fygar 32 32
+
+add_animation idle 2 2 0 false
+add_animation walking 2 3 0.1 true
+add_animation falling 7 7 0 false
+add_animation preparing_to_breathe 1 2 0.5 true
+add_animation breathing_fire 2 2 0 false
+
+frames_size 1000
+
+frame 0
+digging false
+direction IDLE
+position 248 32
+animation walking
+
+frame 193
+direction LEFT
+animation walking
+
+frame 305
+direction IDLE
+animation preparing_to_breathe
+
+frame 313
+direction IDLE
+animation breathing_fire
+
+frame 360
+direction LEFT
+animation walking
+
+frame 424
+direction IDLE
+
+frame 529
+animation falling
+position 72 32
+frame 530
+position 72 36
+frame 531
+position 72 40
+frame 532
+position 72 44
+frame 533
+position 72 48
+frame 534
+position 72 52
+frame 535
+position 72 56
